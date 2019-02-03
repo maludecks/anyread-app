@@ -1,14 +1,34 @@
-import React, { Component } from 'react';
+import React from 'react';
+import { connect } from 'react-redux';
+
+import { parseUrl } from '../actions/urlParserActions';
 
 import Grid from '@material-ui/core/Grid';
 import Button from '@material-ui/core/Button';
 import Input from '@material-ui/core/Input';
 
-class UrlParserFormComponent extends Component {
+class UrlParserComponent extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      url: ''
+    }
+  }
+
+  handleSubmit = (event) => {
+    event.preventDefault();
+    this.props.parseUrl(this.state.url);
+  }
+
+  handleChange = (event) => {
+    this.setState({url: event.target.value});
+  }
+
   render() {
     return (
       <header className="App-header">
-          <form onSubmit={this.props.handleSubmit}>
+          <form onSubmit={this.handleSubmit}>
             <Grid
               container
               direction="row"
@@ -24,7 +44,7 @@ class UrlParserFormComponent extends Component {
                   fullWidth
                   autoFocus
                   placeholder="http://article-url-goes-here.com"
-                  onChange={this.props.handleChange}
+                  onChange={this.handleChange}
                 />
               </Grid>
               <Button
@@ -39,6 +59,13 @@ class UrlParserFormComponent extends Component {
         </header>
     );
   }
-}
+};
 
-export default UrlParserFormComponent;
+const mapDispatchToProps = {
+  parseUrl
+};
+
+export default connect(
+  null,
+  mapDispatchToProps
+)(UrlParserComponent);
