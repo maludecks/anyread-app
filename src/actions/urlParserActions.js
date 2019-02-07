@@ -1,4 +1,5 @@
-import axios from 'axios';
+import { call, put } from 'redux-saga/effects';
+import { getArticleParsed } from '../repositories/urlParserRepository';
 
 /*
 * action types
@@ -10,38 +11,25 @@ export const PARSE_URL_FAILED = 'PARSE_URL_FAILED';
 /*
 * action creators
 */
-export function parseUrl(url) {
-  return function(dispatch, getState) {
-    const apiUrl = `http://localhost/reader?url=${url}`;
+export function* parseUrl({ payload }) {
+  try {
+    const { url } = payload;
+    const article = yield call(() => getArticleParsed(url));
 
-    return axios.get(apiUrl)
-      .then(function(res) {
-        const article = res.data;
-        dispatch(parseUrlSucceeded(article))
-      })
-      .catch(function(err) {
-        const errMsg = 'An error occurred trying to read the url :('
-        dispatch(parseUrlFailed(errMsg));
-      });
-  }
-}
-
-export function parseUrlSucceeded(article) {
-  return {
-    type: PARSE_URL_SUCCEEDED,
-    payload: {
-      article,
-      success: true
-    }
-  }
-}
-
-export function parseUrlFailed(message) {
-  return {
-    type: PARSE_URL_FAILED,
-    payload: {
-      success: false,
-      message
-    }
+    yield put({
+      type: PARSE_URL_SUCCEEDED,
+      payload: {
+        article,
+        success: true
+      }
+    });
+  } catch(e) {
+    yield put({
+      type: PARSE_URL_FAILED,
+      payload: {
+        success: false,
+        message: 'An error occurred trying to read the url :('
+      }
+    });
   }
 }
