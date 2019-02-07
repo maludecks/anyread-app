@@ -20,8 +20,8 @@ export function parseUrl(url) {
         dispatch(parseUrlSucceeded(article))
       })
       .catch(function(err) {
-        console.log(err);
-        // dispatch(parseUrlFailed);
+        const errMsg = 'An error occurred trying to read the url :('
+        dispatch(parseUrlFailed(errMsg));
       });
   }
 }
@@ -30,13 +30,18 @@ export function parseUrlSucceeded(article) {
   return {
     type: PARSE_URL_SUCCEEDED,
     payload: {
-      article
+      article,
+      success: true
     }
   }
 }
 
-export function parseUrlFailed() {
+export function parseUrlFailed(message) {
   return {
-    type: PARSE_URL_FAILED
+    type: PARSE_URL_FAILED,
+    payload: {
+      success: false,
+      message
+    }
   }
 }

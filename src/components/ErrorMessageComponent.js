@@ -1,9 +1,11 @@
 import React from 'react';
+
 import { connect } from 'react-redux';
 
 import Grid from '@material-ui/core/Grid';
+import Typography from '@material-ui/core/Typography';
 
-const ArticleComponent = ({ article }) => {
+const ErrorMessageComponent = ({ message, shouldShow }) => {
   return (
     <Grid
       container
@@ -13,18 +15,21 @@ const ArticleComponent = ({ article }) => {
       spacing={16}
       >
       <Grid item xs={8}>
-        <div dangerouslySetInnerHTML={{__html: article }}></div>
+        <Typography variant="h6" align="center">
+          { message }
+        </Typography>
       </Grid>
     </Grid>
   );
 }
 
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
   return {
-    article: state.reader.article
+    message: state.reader.message
   }
-}
+};
 
 export default connect(
-  mapStateToProps
-)(ArticleComponent);
+  mapStateToProps,
+  null
+)(ErrorMessageComponent);

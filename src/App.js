@@ -3,12 +3,12 @@ import { connect } from 'react-redux';
 
 import './assets/App.css';
 import UrlParserConnectedComponent from './components/UrlParserConnectedComponent';
-import ArticleConnectedComponent from './components/ArticleConnectedComponent';
+import ArticleBlockComponent from './components/ArticleBlockComponent';
 
 const App = () => (
   <div className="App">
     <UrlParserConnectedComponent />
-    <ArticleConnectedComponent />
+    <ArticleBlockComponent />
   </div>
 );
 
