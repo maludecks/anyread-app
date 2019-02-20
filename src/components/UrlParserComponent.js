@@ -1,6 +1,4 @@
 import React from 'react';
-import { connect } from 'react-redux';
-
 import Grid from '@material-ui/core/Grid';
 import Button from '@material-ui/core/Button';
 import Input from '@material-ui/core/Input';
@@ -17,12 +15,7 @@ class UrlParserComponent extends React.Component {
   handleSubmit = (event) => {
     event.preventDefault();
 
-    this.props.dispatch({
-      type: 'PARSE_URL',
-      payload: {
-        url: this.state.url
-      }
-    });
+    this.props.parseUrl(this.state.url);
   }
 
   handleChange = (event) => {
@@ -65,11 +58,4 @@ class UrlParserComponent extends React.Component {
   }
 };
 
-const mapDispatchToProps = (dispatch) => {
-  return { dispatch }
-};
-
-export default connect(
-  null,
-  mapDispatchToProps
-)(UrlParserComponent);
+export default UrlParserComponent;

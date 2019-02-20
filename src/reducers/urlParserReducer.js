@@ -1,4 +1,4 @@
-import { PARSE_URL_SUCCEEDED, PARSE_URL_FAILED } from '../actions/urlParserActions';
+import { PARSE_URL_SUCCEEDED, PARSE_URL_FAILED } from '../constants/actionTypes';
 
 const initialState = {
   article: '',
@@ -10,13 +10,13 @@ export default function(state = initialState, action) {
     case PARSE_URL_SUCCEEDED: {
       const { article, success } = action.payload;
 
-      if (!article.html) {
+      if (!article) {
           return state;
       }
 
       return {
         ...state,
-        article: article.html,
+        article,
         success
       }
     }

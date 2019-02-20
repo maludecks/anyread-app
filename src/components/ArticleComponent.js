@@ -1,6 +1,4 @@
 import React from 'react';
-import { connect } from 'react-redux';
-
 import Grid from '@material-ui/core/Grid';
 
 const ArticleComponent = ({ article }) => {
@@ -19,12 +17,4 @@ const ArticleComponent = ({ article }) => {
   );
 }
 
-const mapStateToProps = state => {
-  return {
-    article: state.reader.article
-  }
-}
-
-export default connect(
-  mapStateToProps
-)(ArticleComponent);
+export default ArticleComponent;

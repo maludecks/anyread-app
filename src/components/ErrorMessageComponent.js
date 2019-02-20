@@ -1,11 +1,8 @@
 import React from 'react';
-
-import { connect } from 'react-redux';
-
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 
-const ErrorMessageComponent = ({ message, shouldShow }) => {
+const ErrorMessageComponent = ({ message }) => {
   return (
     <Grid
       container
@@ -23,13 +20,4 @@ const ErrorMessageComponent = ({ message, shouldShow }) => {
   );
 }
 
-const mapStateToProps = (state) => {
-  return {
-    message: state.reader.message
-  }
-};
-
-export default connect(
-  mapStateToProps,
-  null
-)(ErrorMessageComponent);
+export default ErrorMessageComponent;

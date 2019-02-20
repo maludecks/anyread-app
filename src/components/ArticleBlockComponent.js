@@ -1,32 +1,22 @@
 import React from 'react';
 
-import { connect } from 'react-redux';
-import ArticleConnectedComponent from './ArticleConnectedComponent';
-import ErrorMessageComponent from './ErrorMessageComponent';
+import ArticleContainer from '../containers/ArticleContainer';
+import ErrorMessageContainer from '../containers/ErrorMessageContainer';
 
 const ArticleBlockComponent = ({ success }) => {
 
   let articleBlock;
 
   if (success) {
-    articleBlock = <ArticleConnectedComponent />
+    articleBlock = <ArticleContainer />
   } else {
-    articleBlock = <ErrorMessageComponent />
+    articleBlock = <ErrorMessageContainer />
   }
 
   return (<div className="App-body">
-      {articleBlock}
+      { articleBlock }
     </div>
   );
 }
 
-const mapStateToProps = (state) => {
-  return {
-    success: state.reader.success
-  }
-};
-
-export default connect(
-  mapStateToProps,
-  null
-)(ArticleBlockComponent);
+export default ArticleBlockComponent;
