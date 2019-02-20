@@ -2,23 +2,23 @@ import { PARSE_URL_SUCCEEDED, PARSE_URL_FAILED } from '../constants/actionTypes'
 
 const initialState = {
   article: '',
-  url: ''
+  url: '',
 };
 
-export default function(state = initialState, action) {
-  switch(action.type) {
+export default function (state = initialState, action) {
+  switch (action.type) {
     case PARSE_URL_SUCCEEDED: {
       const { article, success } = action.payload;
 
       if (!article) {
-          return state;
+        return state;
       }
 
       return {
         ...state,
         article,
-        success
-      }
+        success,
+      };
     }
     case PARSE_URL_FAILED: {
       const { success, message } = action.payload;
@@ -26,8 +26,8 @@ export default function(state = initialState, action) {
       return {
         ...state,
         success,
-        message
-      }
+        message,
+      };
     }
     default:
       return state;

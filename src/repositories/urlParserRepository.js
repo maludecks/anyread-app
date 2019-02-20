@@ -4,10 +4,8 @@ export function getArticleParsed(url) {
   const apiUrl = `http://localhost:3000/parse?url=${url}`;
 
   return axios.get(apiUrl)
-    .then(function(res) {
-      return res.data;
-    })
-    .catch(function(e) {
+    .then(res => res.data)
+    .catch((e) => {
       throw e;
     });
 }

@@ -1,12 +1,10 @@
 import { connect } from 'react-redux';
 import ArticleComponent from '../components/ArticleComponent';
 
-const mapStateToProps = state => {
-  return {
-    article: state.reader.article
-  }
-}
+const mapStateToProps = state => ({
+  article: state.reader.article,
+});
 
 export default connect(
-  mapStateToProps
+  mapStateToProps,
 )(ArticleComponent);

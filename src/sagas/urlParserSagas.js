@@ -10,16 +10,16 @@ export function* parseUrl({ payload: url }) {
       type: PARSE_URL_SUCCEEDED,
       payload: {
         article: data.article.content,
-        success: true
-      }
+        success: true,
+      },
     });
-  } catch(e) {
+  } catch (e) {
     yield put({
       type: PARSE_URL_FAILED,
       payload: {
         success: false,
-        message: 'An error occurred trying to read the url :('
-      }
+        message: 'An error occurred trying to read the url :(',
+      },
     });
   }
 }

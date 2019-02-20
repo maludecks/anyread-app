@@ -14,7 +14,7 @@ const sagaMiddleware = createSagaMiddleware();
 
 const store = createStore(
   rootReducer,
-  applyMiddleware(sagaMiddleware)
+  applyMiddleware(sagaMiddleware),
 );
 
 sagaMiddleware.run(rootSagas);
@@ -25,8 +25,8 @@ ReactDOM.render(
   <Provider store={store}>
     <App />
   </Provider>,
-  rootEl
-  );
+  rootEl,
+);
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.
