@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { parseUrl } from '../actions/urlParserActions';
+import parseUrl from '../actions/urlParserActions';
 import UrlParserComponent from '../components/UrlParserComponent';
 
 const mapDispatchToProps = dispatch => bindActionCreators({
@@ -8,6 +8,5 @@ const mapDispatchToProps = dispatch => bindActionCreators({
 }, dispatch);
 
 export default connect(
-  null,
   mapDispatchToProps,
 )(UrlParserComponent);

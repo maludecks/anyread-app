@@ -1,5 +1,6 @@
 import React from 'react';
 import Grid from '@material-ui/core/Grid';
+import PropTypes from 'prop-types';
 
 const ArticleComponent = ({ article }) => (
   <Grid
@@ -14,5 +15,9 @@ const ArticleComponent = ({ article }) => (
     </Grid>
   </Grid>
 );
+
+ArticleComponent.propTypes = {
+  article: PropTypes.string.isRequired,
+};
 
 export default ArticleComponent;

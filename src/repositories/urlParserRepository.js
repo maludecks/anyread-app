@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-export function getArticleParsed(url) {
+function getArticleParsed(url) {
   const apiUrl = `http://localhost:3000/parse?url=${url}`;
 
   return axios.get(apiUrl)
@@ -9,3 +9,5 @@ export function getArticleParsed(url) {
       throw e;
     });
 }
+
+export default getArticleParsed;

@@ -1,8 +1,8 @@
 import { call, put } from 'redux-saga/effects';
-import { getArticleParsed } from '../repositories/urlParserRepository';
+import getArticleParsed from '../repositories/urlParserRepository';
 import { PARSE_URL_SUCCEEDED, PARSE_URL_FAILED } from '../constants/actionTypes';
 
-export function* parseUrl({ payload: url }) {
+function* parseUrl({ payload: url }) {
   try {
     const data = yield call(() => getArticleParsed(url));
 
@@ -23,3 +23,5 @@ export function* parseUrl({ payload: url }) {
     });
   }
 }
+
+export default parseUrl;

@@ -1,5 +1,6 @@
 import React from 'react';
 
+import PropTypes from 'prop-types';
 import ArticleContainer from '../containers/ArticleContainer';
 import ErrorMessageContainer from '../containers/ErrorMessageContainer';
 
@@ -17,6 +18,10 @@ const ArticleBlockComponent = ({ success }) => {
       { articleBlock }
     </div>
   );
+};
+
+ArticleBlockComponent.propTypes = {
+  success: PropTypes.bool.isRequired,
 };
 
 export default ArticleBlockComponent;

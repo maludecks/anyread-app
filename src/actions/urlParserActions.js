@@ -4,6 +4,6 @@ import * as actionTypes from '../constants/actionTypes';
 /*
 * action creators
 */
+const parseUrl = createAction(actionTypes.PARSE_URL, url => url);
 
-// eslint-disable-next-line import/prefer-default-export
-export const parseUrl = createAction(actionTypes.PARSE_URL, url => url);
+export default parseUrl;

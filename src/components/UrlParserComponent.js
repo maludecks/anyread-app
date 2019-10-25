@@ -16,7 +16,8 @@ class UrlParserComponent extends React.Component {
   handleSubmit = (event) => {
     event.preventDefault();
 
-    const { parseUrl, url } = this.props;
+    const { parseUrl } = this.props;
+    const { url } = this.state;
 
     parseUrl(url);
   }
@@ -45,6 +46,7 @@ class UrlParserComponent extends React.Component {
                 autoFocus
                 placeholder="http://article-url-goes-here.com"
                 onChange={this.handleChange}
+                data-testid="url-input"
               />
             </Grid>
             <Button
@@ -62,8 +64,7 @@ class UrlParserComponent extends React.Component {
 }
 
 UrlParserComponent.propTypes = {
-  url: PropTypes.string.isRequired,
-  parseUrl: PropTypes.func.isRequired
+  parseUrl: PropTypes.func.isRequired,
 };
 
 export default UrlParserComponent;

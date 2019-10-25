@@ -1,5 +1,5 @@
 import { takeEvery } from 'redux-saga/effects';
-import { parseUrl } from './sagas/urlParserSagas';
+import parseUrl from './sagas/urlParserSagas';
 import * as actionTypes from './constants/actionTypes';
 
 function* rootSagas() {
